@@ -33,11 +33,11 @@ def add_user():
     with open('users.dat', 'rb') as users:
         users_dict = load(users)
 
-    name = input('Name: ').title()
-    family = input('Family: ').title()
-    father_name = input('Father: ').title()
-    code = input('Nationality Code: ')
-    birthday = input('Birthday: ')
+    name = input('Name: ').strip().title()
+    family = input('Family: ').strip().title()
+    father_name = input('Father: ').strip().title()
+    code = input('Nationality Code: ').strip()
+    birthday = input('Birthday: ').strip()
     user_id = len(users_dict)
 
     users_dict[user_id] = [
@@ -64,10 +64,10 @@ def add_book():
     with open('books.dat', 'rb') as books:
         book_dict = load(books)
 
-    title = input('Title: ').title()
-    author = input('Author: ').title()
-    subject = input('Subject: ').capitalize()
-    year = input('Year: ')
+    title = input('Title: ').strip().title()
+    author = input('Author: ').strip().title()
+    subject = input('Subject: ').strip().capitalize()
+    year = input('Year: ').strip()
     book_id = len(book_dict)
 
     book_dict[book_id] = [title, author, subject, year]
@@ -87,8 +87,9 @@ def search_book():
     with open('books.dat', 'rb') as books:
         book_dict = load(books)
 
-    title = input('Book Title: ')
-    print(book_dict[title.title()])
+    book_id = int(input('Book ID: '))
+    book = book_dict.get(book_id, "")
+    print(*book, sep=', ')
     input('Enter To Go Back...')
 
 
