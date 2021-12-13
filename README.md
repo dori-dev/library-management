@@ -1,4 +1,4 @@
-# library-management
+# library management
 Library Management System
 
 #
